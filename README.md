@@ -1,3 +1,9 @@
+# env variables
+
+1. DB_URL="postgresql+asyncpg://postgres:password@localhost:5432/M2A1"
+2. environment="dev"
+3. Title="M2A1"
+
 # Instructions to execute Question 1.
 
 Run this command at the root of the folder
