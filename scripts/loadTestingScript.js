@@ -1,12 +1,9 @@
 import http from 'k6/http'
-import { check, sleep } from 'k6'
+import { check } from 'k6'
 
 export const options = {
-    stages: [
-        { duration: '5s', target: 5 },
-        { duration: '5s', target: 10 },
-        { duration: '5s', target: 0 }
-    ]
+    vus: 500,
+    iterations: 500
 }
 
 export default function () {
@@ -19,8 +16,9 @@ export default function () {
         'succesfull redirect': (r) => r.status == 307,
     })
 
-    const randomString = Math.random().toString(36).substring(2);
-    const res2 = http.post(targetUrl2, JSON.stringify({ long_url: `https://www.example.com/${randomString}` }), {
+    const randomString1 = Math.random().toString(36).substring(2);
+    const randomString2 = Math.random().toString(36).substring(2);
+    const res2 = http.post(targetUrl2, JSON.stringify({ long_url: `https://www.example.com/${randomString1 + randomString2}` }), {
         headers: { 'Content-Type': 'application/json' },
     });
 
@@ -28,5 +26,4 @@ export default function () {
         'successfull Insert': (r) => r.status == 201
     })
 
-    sleep(0.05)
 }
