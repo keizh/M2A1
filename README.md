@@ -1,8 +1,13 @@
-# env variables
+# .env variables
 
 1. DB_URL="postgresql+asyncpg://postgres:password@localhost:5432/M2A1"
 2. environment="dev"
 3. Title="M2A1"
+
+# .env.test variables
+
+1. DB_URL="postgresql+asyncpg://postgres:password@localhost:5432/M2A1_test"
+2. environment="test"
 
 # Instructions to execute Question 1.
 
