@@ -35,7 +35,9 @@ class URLRepository(URLRepositoryInterface):
             if constraint_name in ['unique_su_constraint']:
                 raise HTTPException(status_code=500, detail="internal server error")
             elif constraint_name in ['unique_lu_constraint']:
-                raise HTTPException(status_code=409, detail="longurl record already exists")
+                # raise HTTPException(status_code=409, detail="longurl record already exists")
+                data=await self.get_by_long_url(long_url)
+                return short_url_Model.model_validate(data)
             raise HTTPException(status_code=500, detail=f"Integrity Error: constraint={constraint_name}, sqlState={sqlState}")
         except DataError as e:
             await self.db.rollback()
