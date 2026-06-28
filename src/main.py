@@ -7,7 +7,7 @@ from src.db import engine,metadata_obj
 @asynccontextmanager
 async def lifespan(app:FastAPI):
     set_up_logging()
-    # Only rebuild the schema in local dev. In prod (e.g. Vercel + Neon) this
+    # Only rebuild the schema in local dev. In prod ( Vercel + Neon ) this
     # would run on every cold start and WIPE the live database, so it is gated
     # behind environment == 'dev'. Prod schema is created once via a separate
     # one-time script.
